@@ -3,7 +3,10 @@ import {
   ListView
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
+import { SideMenu } from 'react-native-side-menu';
+
 import QuickView from './views/QuickView';
+import Menu from './views/Menu';
 import TabIcon from './views/TabIcon';
 import TodoList from './views/TodoList';
 
@@ -16,12 +19,14 @@ const dataSource = ds.cloneWithRows([
 
 const App = () => {
   return (
-    <Router>
-      <Scene key='quick_view' tabs={true}>
-        <Scene key='a' component={TodoList} dataSource={dataSource} icon={TabIcon} title='Todo List' initial={true}/>
-        <Scene key='b' component={QuickView} icon={TabIcon} title='Backlog' />
-      </Scene>
-    </Router>
+		<Router>
+			<Scene key='quick_view' tabs={true}>
+				<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Todo List' initial={true}/>
+				<Scene key='b' component={QuickView} icon={TabIcon} title='Backlog' />
+			</Scene>
+			<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
+
+		</Router>
   )
 }
 

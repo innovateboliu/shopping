@@ -1,4 +1,5 @@
 import React from 'react';
+import CheckBox from 'react-native-checkbox';
 
 import {
   ListView,
@@ -8,8 +9,12 @@ import {
 
 const TodoItem = ({data}) => {
   return(
-    <View style={{flex: 1, height:30}}>
-      <Text>{data}</Text>
+    <View style={{flex: 1, height:50}}>
+      <CheckBox
+        label={data}
+        checked={true}
+        onChange={(checked) => console.log('I am checked', checked)}
+      />
     </View>
   );
 };
