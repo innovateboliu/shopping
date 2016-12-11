@@ -7,7 +7,7 @@ import {
 const TabIcon = (props) => {
   return(
     <View>
-      <Text style={{ color: props.selected ? 'red' : 'black' }}>
+      <Text style={{ fontSize:20, color: props.selected ? 'orange' : 'grey' }}>
         {props.title}
       </Text>
     </View>

@@ -13,17 +13,24 @@ import TodoItem from './TodoItem';
 const TodoList = ({dataSource}) => {
   return(
     <View
-      style={{flex: 1, marginTop:40, marginLeft:30, marginRight: 30}}
+      style={{flex: 1, marginTop:30, marginLeft:30, marginRight: 30}}
     >
-			<View style={{flex:1}}>
-        <TouchableHighlight
-					style={{flex:1, alignSelf:'flex-end'}}
-          onPress={() => Actions.menu()}
-        >
-			  	<Image style={{height:30, resizeMode:'contain'}} source={{uri: icon}}/>
-        </TouchableHighlight>
-			</View>
-      <View style={{flex:10}}>
+      <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
+        <View style={{flex:1}}>
+        </View>
+        <View style={{flex:2, alignItems:'center', justifyContent:'center'}}>
+          <Text style={{fontSize:30}}>Mitsuwa</Text>
+        </View>
+
+        <View style={{flex:1, alignItems:'flex-end', justifyContent:'center'}}>
+          <TouchableHighlight
+            onPress={() => Actions.menu()}
+          >
+            <Image style={{height:30, width:30}} source={{uri: icon}}/>
+          </TouchableHighlight>
+        </View>
+      </View>
+      <View style={{flex:10, marginTop:40}}>
         <ListView
           style={{flex:10}}
           dataSource={dataSource}

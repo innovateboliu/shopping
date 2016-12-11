@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  StyleSheet,
   ListView
 } from 'react-native';
 import { Router, Scene } from 'react-native-router-flux';
@@ -17,12 +18,28 @@ const dataSource = ds.cloneWithRows([
   'Egg'
 ])
 
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: 'transparent', justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabBarStyle: {
+    backgroundColor: '#eee',
+  },
+  tabBarSelectedItemStyle: {
+    backgroundColor: '#ddd',
+  },
+});
+
 const App = () => {
   return (
 		<Router>
-			<Scene key='quick_view' tabs={true}>
-				<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Todo List' initial={true}/>
-				<Scene key='b' component={QuickView} icon={TabIcon} title='Backlog' />
+			<Scene
+        key='quick_view'
+        tabs={true}
+        tabBarStyle={styles.tabBarStyle}
+      >
+				<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' initial={true}/>
+				<Scene key='b' component={QuickView} icon={TabIcon} title='History' />
 			</Scene>
 			<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
 
