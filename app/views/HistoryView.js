@@ -10,6 +10,7 @@ import {
 import TagRow from './TagRow';
 import { addTodo } from '../actions';
 import { connect } from 'react-redux'
+import { Madoka } from 'react-native-textinput-effects';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +49,15 @@ const HistoryView= ({onTagPress, historyItems}) => {
           dataSource={dataSource}
           renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
         />
+			</View>
+      <View style={{flex:4}}>
+				<Madoka
+					label={'Name'}
+					// this is used as active and passive border color
+					borderColor={'orange'}
+					labelStyle={{ color: '#00BFFF' }}
+					inputStyle={{ color: '#00BFFF' }}
+				/>
 			</View>
     </View>
   );
