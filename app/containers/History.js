@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addTodo } from '../actions';
+import { addTodo, addItem } from '../actions';
 import HistoryView from '../views/HistoryView';
 
 const mapStateToProps = (state) => {
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onTagPress: (tag) => {
       dispatch(addTodo(tag.id, tag.name));
+    },
+    onEndEditing: (event) => {
+      dispatch(addItem(event.nativeEvent.text));
     }
   };
 };

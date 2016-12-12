@@ -17,8 +17,8 @@ import { createStore } from 'redux';
 const initialState = {
   todos: [],
   historyItems: [
-    {id: 0, name: 'Apple'},
-    {id: 3, name: 'Pear'}
+    {id: 'apple', name: 'Apple'},
+    {id: 'pear', name: 'Pear'}
   ],
 }
 

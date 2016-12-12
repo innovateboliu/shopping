@@ -13,3 +13,11 @@ export const toggleTodoItem = (id) => {
     id
   };
 };
+
+export const addItem = (name) => {
+  return {
+    type: 'ADD_ITEM',
+    name: name,
+    id: name.toLowerCase()
+  };
+};

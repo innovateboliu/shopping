@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
-const HistoryView= ({onTagPress, historyItems}) => {
+const HistoryView= ({historyItems, onTagPress, onEndEditing}) => {
   const dataSource = ds.cloneWithRows(historyItems);
   return(
     <View
@@ -52,11 +52,12 @@ const HistoryView= ({onTagPress, historyItems}) => {
 			</View>
       <View style={{flex:4}}>
 				<Madoka
+          onEndEditing={onEndEditing}
 					label={'Name'}
 					// this is used as active and passive border color
 					borderColor={'orange'}
 					labelStyle={{ color: '#00BFFF' }}
-					inputStyle={{ color: '#00BFFF' }}
+					inputStyle={{ textAlign: 'center', color: '#00BFFF' }}
 				/>
 			</View>
     </View>
