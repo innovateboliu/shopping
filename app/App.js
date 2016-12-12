@@ -39,7 +39,7 @@ const App = () => {
         tabBarStyle={styles.tabBarStyle}
       >
 				<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' initial={true}/>
-				<Scene key='b' component={QuickView} icon={TabIcon} title='History' />
+				<Scene key='b' component={QuickView} icon={TabIcon} title='History' hideNavBar/>
 			</Scene>
 			<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
 
