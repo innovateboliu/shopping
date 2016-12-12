@@ -31,17 +31,17 @@ const styles = StyleSheet.create({
   }
 });
 
-const TagRow = ({contents}) => {
+const TagRow = ({contents, onPress}) => {
   return (
     <View style={styles.tag_row}>
       <View style={styles.tag}>
-        <Text style={styles.text}>{contents[0]}</Text>
+        <Text style={styles.text} onPress = {() => onPress(contents[0])}>{contents[0].name}</Text>
       </View>
       <View style={styles.tag}>
-        <Text style={styles.text}>{contents[1]}</Text>
+        <Text style={styles.text} onPress = {() => onPress(contents[1])}>{contents[1].name}</Text>
       </View>
       <View style={styles.tag}>
-        <Text style={styles.text}>{contents[2]}</Text>
+        <Text style={styles.text} onPress = {() => onPress(contents[2])}>{contents[2].name}</Text>
       </View>
     </View>
   );
