@@ -1,5 +1,6 @@
 import React from 'react';
 import {Actions} from 'react-native-router-flux'
+import TagRow from './TagRow';
 
 import {
   ListView,
@@ -11,7 +12,7 @@ import {
 import TodoItem from './TodoItem';
 
 
-const TodoListView = ({todos}) => {
+const TodoListView = ({todos, onTagPress}) => {
   const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
   const dataSource = ds.cloneWithRows(todos);
   return(
@@ -37,7 +38,7 @@ const TodoListView = ({todos}) => {
         <ListView
           style={{flex:10}}
           dataSource={dataSource}
-          renderRow={(data) => <TagRow contents={data}/>}
+          renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
         />
 			</View>
     </View>

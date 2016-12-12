@@ -31,17 +31,20 @@ const styles = StyleSheet.create({
   }
 });
 
-const TagRow = ({contents, onPress}) => {
+const tagStyle = {
+  flex:1,
+  marginLeft:20,
+  marginRight:20,
+  borderRadius: 10,
+  overflow: 'hidden',
+};
+
+const TagRow = ({content, onPress}) => {
+  const tagBackgroundColor = {backgroundColor: (content.inTodos || content.completed) ? 'orange' : '#00BFFF' };
   return (
     <View style={styles.tag_row}>
-      <View style={styles.tag}>
-        <Text style={styles.text} onPress = {() => onPress(contents[0])}>{contents[0].name}</Text>
-      </View>
-      <View style={styles.tag}>
-        <Text style={styles.text} onPress = {() => onPress(contents[1])}>{contents[1].name}</Text>
-      </View>
-      <View style={styles.tag}>
-        <Text style={styles.text} onPress = {() => onPress(contents[2])}>{contents[2].name}</Text>
+      <View style={Object.assign({}, tagStyle, tagBackgroundColor) }>
+        <Text style={styles.text} onPress = {() => onPress(content)}>{content.name}</Text>
       </View>
     </View>
   );

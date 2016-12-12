@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
-import { toggleTodoItem } from '../actions';
-import TodoListView from '../views/TodoListView';
+import { addTodo } from '../actions';
+import HistoryView from '../views/HistoryView';
 
 const mapStateToProps = (state) => {
   return {
-    todos: state.todos
+    historyItems: state.historyItems
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onTagPress: (tag) => {
-      dispatch(toggleTodoItem(tag.id));
+      dispatch(addTodo(tag.id, tag.name));
     }
   };
 };
 
-const TodoList = connect(
+const History = connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoListView);
+)(HistoryView);
 
-export default TodoList;
+export default History;

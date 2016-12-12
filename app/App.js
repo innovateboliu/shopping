@@ -6,7 +6,7 @@ import {
 import { Router, Scene } from 'react-native-router-flux';
 import { SideMenu } from 'react-native-side-menu';
 
-import HistoryView from './views/HistoryView';
+import History from './containers/History';
 import Menu from './views/Menu';
 import TabIcon from './views/TabIcon';
 import TodoList from './containers/TodoList';
@@ -14,7 +14,15 @@ import shoppingApp from './reducers';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-let store = createStore(shoppingApp);
+const initialState = {
+  todos: [],
+  historyItems: [
+    {id: 0, name: 'Apple'},
+    {id: 3, name: 'Pear'}
+  ],
+}
+
+let store = createStore(shoppingApp, initialState);
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
 const dataSource = ds.cloneWithRows([
@@ -45,7 +53,7 @@ const App = () => {
           tabBarStyle={styles.tabBarStyle}
         >
 		  		<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' initial={true}/>
-		  		<Scene key='b' component={HistoryView} icon={TabIcon} title='History' hideNavBar/>
+		  		<Scene key='b' component={History} icon={TabIcon} title='History' hideNavBar/>
 		  	</Scene>
 		  	<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
 

@@ -6,3 +6,10 @@ export const addTodo = (id, name) => {
     name
   }
 };
+
+export const toggleTodoItem = (id) => {
+  return {
+    type: 'TOGGLE_TODO_ITEM',
+    id
+  };
+};
