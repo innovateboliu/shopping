@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   View,
 	TouchableHighlight,
@@ -43,23 +44,27 @@ const HistoryView= ({historyItems, onTagPress, onEndEditing}) => {
           </TouchableHighlight>
         </View>
       </View>
-      <View style={{flex:10, marginTop:40}}>
-        <ListView
-          style={{flex:1, marginTop: 50}}
-          dataSource={dataSource}
-          renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
-        />
-			</View>
-      <View style={{flex:4}}>
-				<Madoka
-          onEndEditing={onEndEditing}
-					label={'Name'}
-					// this is used as active and passive border color
-					borderColor={'orange'}
-					labelStyle={{ color: '#00BFFF' }}
-					inputStyle={{ textAlign: 'center', color: '#00BFFF' }}
-				/>
-			</View>
+      <KeyboardAvoidingView behavior='padding' style={{flex:14}}>
+        <View style={{flex:10, marginTop:40}}>
+          <ListView
+            style={{flex:1, marginTop: 50}}
+            dataSource={dataSource}
+            renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
+          />
+        </View>
+        <View style={{flex:1}}/>
+        <View style={{flex:4}}>
+          <Madoka
+            clearTextOnFocus
+            onEndEditing={onEndEditing}
+            label={'Name'}
+            // this is used as active and passive border color
+            borderColor={'orange'}
+            labelStyle={{ color: '#00BFFF' }}
+            inputStyle={{ textAlign: 'center', color: '#00BFFF' }}
+          />
+        </View>
+      </KeyboardAvoidingView>
     </View>
   );
 };
