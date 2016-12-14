@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import { toggleTodoItem } from '../actions';
 import TodoListView from '../views/TodoListView';
+const R = require('ramda');
+
 
 const mapStateToProps = (state) => {
   return {
-    todos: state.todos
+    todos: state.items.filter((item) => item.inTodos).map(item => {
+      return R.merge(item, {tapped: item.completed});
+    })
   };
 };
 

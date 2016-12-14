@@ -15,8 +15,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 const initialState = {
-  todos: [],
-  historyItems: [
+  items: [
     {id: 'apple', name: 'Apple'},
     {id: 'pear', name: 'Pear'}
   ],

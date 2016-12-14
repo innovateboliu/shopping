@@ -1,20 +1,25 @@
 import { connect } from 'react-redux';
-import { addTodo, addItem } from '../actions';
+import { toggleItem, addItem } from '../actions';
 import HistoryView from '../views/HistoryView';
+const R = require('ramda');
 
 const mapStateToProps = (state) => {
   return {
-    historyItems: state.historyItems
+    items: state.items.map(item => {
+      return R.merge(item, {tapped: item.inTodos});
+    })
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onTagPress: (tag) => {
-      dispatch(addTodo(tag.id, tag.name));
+      dispatch(toggleItem(tag.id, tag.name));
     },
     onEndEditing: (event) => {
-      dispatch(addItem(event.nativeEvent.text));
+      if (event.nativeEvent.text != "") {
+        dispatch(addItem(event.nativeEvent.text));
+      }
     }
   };
 };

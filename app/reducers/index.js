@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import todos from './todos';
-import historyItems from './history';
+import items from './items';
 
 const shoppingApp = combineReducers({
-  todos,
-  historyItems 
+  items 
 });
 
 export default shoppingApp;

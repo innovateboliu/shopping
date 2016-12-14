@@ -1,7 +1,7 @@
 let nextTodoId = 0;
-export const addTodo = (id, name) => {
+export const toggleItem = (id, name) => {
   return {
-    type: 'ADD_TODO',
+    type: 'TOGGLE_ITEM',
     id,
     name
   }

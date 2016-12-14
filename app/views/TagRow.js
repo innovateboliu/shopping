@@ -40,7 +40,7 @@ const tagStyle = {
 };
 
 const TagRow = ({content, onPress}) => {
-  const tagBackgroundColor = {backgroundColor: (content.inTodos || content.completed) ? 'orange' : '#00BFFF' };
+  const tagBackgroundColor = {backgroundColor: content.tapped ? 'orange' : '#00BFFF' };
   return (
     <View style={styles.tag_row}>
       <View style={Object.assign({}, tagStyle, tagBackgroundColor) }>

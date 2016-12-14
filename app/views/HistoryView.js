@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
 
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
-const HistoryView= ({historyItems, onTagPress, onEndEditing}) => {
-  const dataSource = ds.cloneWithRows(historyItems);
+const HistoryView= ({items, onTagPress, onEndEditing}) => {
+  const dataSource = ds.cloneWithRows(items);
   return(
     <View
       style={{flex: 1, marginTop:30, marginLeft:30, marginRight: 30}}
