@@ -36,6 +36,7 @@ const TodoListView = ({todos, onTagPress}) => {
       </View>
       <View style={{flex:10, marginTop:40}}>
         <ListView
+          enableEmptySections
           style={{flex:10}}
           dataSource={dataSource}
           renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}

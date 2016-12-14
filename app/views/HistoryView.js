@@ -47,6 +47,7 @@ const HistoryView= ({items, onTagPress, onEndEditing, deleteItem}) => {
       <KeyboardAvoidingView behavior='padding' style={{flex:14}}>
         <View style={{flex:10, marginTop:40}}>
           <ListView
+            enableEmptySections
             style={{flex:1, marginTop: 50}}
             dataSource={dataSource}
             renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
