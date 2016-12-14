@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 
 
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
-const HistoryView= ({items, onTagPress, onEndEditing}) => {
+const HistoryView= ({items, onTagPress, onEndEditing, deleteItem}) => {
   const dataSource = ds.cloneWithRows(items);
   return(
     <View

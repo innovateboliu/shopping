@@ -1,5 +1,7 @@
 import React from 'react'
+import {Actions} from 'react-native-router-flux';
 import {
+  TouchableWithoutFeedback,
   StyleSheet,
   View,
   Text 
@@ -39,13 +41,20 @@ const tagStyle = {
   overflow: 'hidden',
 };
 
-const TagRow = ({content, onPress}) => {
+const TagRow = ({content, onPress, deleteItem}) => {
   const tagBackgroundColor = {backgroundColor: content.tapped ? 'orange' : '#00BFFF' };
+  const onLongPress = () => Actions.item_update_modal({id: content.id})
+    
   return (
     <View style={styles.tag_row}>
-      <View style={Object.assign({}, tagStyle, tagBackgroundColor) }>
-        <Text style={styles.text} onPress = {() => onPress(content)}>{content.name}</Text>
-      </View>
+      <TouchableWithoutFeedback
+        onLongPress={onLongPress}
+         onPress = {() => onPress(content)}
+      >
+        <View style={Object.assign({}, tagStyle, tagBackgroundColor) }>
+          <Text style={styles.text}>{content.name}</Text>
+        </View>
+      </TouchableWithoutFeedback>
     </View>
   );
 };

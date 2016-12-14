@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleItem, addItem } from '../actions';
+import { toggleItem, addItem, deleteItem } from '../actions';
 import HistoryView from '../views/HistoryView';
 const R = require('ramda');
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
       if (event.nativeEvent.text != "") {
         dispatch(addItem(event.nativeEvent.text));
       }
+    },
+    deleteItem: (id) => {
+      dispatch(deleteItem(id));
     }
   };
 };

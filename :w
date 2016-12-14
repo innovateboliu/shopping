@@ -1,0 +1,31 @@
+import React from 'react'
+import {
+  Dimensions,
+  StyleSheet,
+  ScrollView,
+  View,
+  Image,
+  Text,
+} from 'react-native';
+import { Component } from 'react';
+
+const window = Dimensions.get('window');
+const uri = 'https://pickaface.net/gallery/avatar/Opi51c74d0125fd4.png';
+
+export default class Menu extends Component {
+
+  render() {
+    return (
+      <View style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Text style={{height:50, fontSize:30}}>Mitsuwa</Text>
+        <Text style={{height:50, fontSize:30}}>Wholefoods</Text>
+        <Text style={{height:50, fontSize:30}}>Ralphs</Text>
+      </View>
+    );
+  }
+};

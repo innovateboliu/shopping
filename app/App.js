@@ -8,6 +8,7 @@ import { SideMenu } from 'react-native-side-menu';
 
 import History from './containers/History';
 import Menu from './views/Menu';
+import ItemUpdate from './containers/ItemUpdate';
 import TabIcon from './views/TabIcon';
 import TodoList from './containers/TodoList';
 import shoppingApp from './reducers';
@@ -55,6 +56,7 @@ const App = () => {
 		  		<Scene key='b' component={History} icon={TabIcon} title='History' hideNavBar/>
 		  	</Scene>
 		  	<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
+		  	<Scene key='item_update_modal' direction='vertical' hideNavBar={true} component={ItemUpdate}/>
 
 		  </Router>
     </Provider>
