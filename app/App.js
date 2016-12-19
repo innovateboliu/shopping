@@ -8,6 +8,7 @@ import { SideMenu } from 'react-native-side-menu';
 
 import History from './containers/History';
 import Menu from './views/Menu';
+import LoginModal from './views/LoginModal';
 import ItemUpdate from './containers/ItemUpdate';
 import TabIcon from './views/TabIcon';
 import TodoList from './containers/TodoList';
@@ -52,10 +53,11 @@ const App = () => {
           tabs={true}
           tabBarStyle={styles.tabBarStyle}
         >
-		  		<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' initial={true}/>
+		  		<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' />
 		  		<Scene key='b' component={History} icon={TabIcon} title='History' hideNavBar/>
 		  	</Scene>
 		  	<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
+		  	<Scene key='login_modal' hideNavBar={true} component={LoginModal} initial/>
 		  	<Scene key='item_update_modal' direction='vertical' hideNavBar={true} component={ItemUpdate}/>
 
 		  </Router>

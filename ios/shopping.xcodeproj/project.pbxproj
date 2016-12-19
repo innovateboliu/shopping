@@ -833,7 +833,7 @@
 				DEVELOPMENT_TEAM = 5S4S3VS5LU;
 				FRAMEWORK_SEARCH_PATHS = /Users/boliu/Documents/FacebookSDK;
 				INFOPLIST_FILE = shopping/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -855,7 +855,7 @@
 				DEVELOPMENT_TEAM = 5S4S3VS5LU;
 				FRAMEWORK_SEARCH_PATHS = /Users/boliu/Documents/FacebookSDK;
 				INFOPLIST_FILE = shopping/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
