@@ -7,6 +7,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import { SideMenu } from 'react-native-side-menu';
 
 import History from './containers/History';
+import WelcomeView from './views/WelcomeView';
 import Menu from './views/Menu';
 import LoginModal from './views/LoginModal';
 import ItemUpdate from './containers/ItemUpdate';
@@ -48,16 +49,18 @@ const App = () => {
   return (
     <Provider store={store}>
 		  <Router>
+        <Scene key='welcome_page' component={WelcomeView} hideNavBar initial/>
 		  	<Scene
           key='quick_view'
           tabs={true}
           tabBarStyle={styles.tabBarStyle}
         >
-		  		<Scene key='a' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' />
-		  		<Scene key='b' component={History} icon={TabIcon} title='History' hideNavBar/>
+          <Scene key='todo_view' component={TodoList} hideNavBar={true} dataSource={dataSource} icon={TabIcon} title='Task' />
+          <Scene key='history_view' component={History} icon={TabIcon} title='History' hideNavBar/>
+          <Scene key='login_view' component={LoginModal} icon={TabIcon} title='User' hideNavBar/>
 		  	</Scene>
 		  	<Scene key='menu' direction='vertical' hideNavBar={true} component={Menu}/>
-		  	<Scene key='login_modal' hideNavBar={true} component={LoginModal} initial/>
+		  	<Scene key='login_modal' hideNavBar={true} component={LoginModal}  />
 		  	<Scene key='item_update_modal' direction='vertical' hideNavBar={true} component={ItemUpdate}/>
 
 		  </Router>

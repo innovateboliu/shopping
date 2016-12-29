@@ -12,8 +12,12 @@
 #import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "RCTPushNotificationManager.h"
+
+
 
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -49,5 +53,43 @@
   return handled;
 }
 
+
+// Required to register for notifications
+- (void)application:(__unused UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+  [RCTPushNotificationManager didRegisterUserNotificationSettings:notificationSettings];
+}
+
+// Required for the remoteNotificationsRegistered event.
+- (void)application:(__unused UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  printf("A$$$$token");
+  [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+// Required for the remoteNotificationRegistrationError event.
+- (void)application:(__unused UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+  [RCTPushNotificationManager didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+// Required for the notification event. You must call the completion handler after handling the remote notification.
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+  printf("A$$$$remote");
+  NSLog(@"notification-body => %@", userInfo);
+  [RCTPushNotificationManager didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    completionHandler(UIBackgroundFetchResultNewData);
+  });
+}
+
+// Required for the localNotificationReceived event.
+- (void)application:(__unused UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+  printf("A$$$$local");
+  [RCTPushNotificationManager didReceiveLocalNotification:notification];
+}
 
 @end
