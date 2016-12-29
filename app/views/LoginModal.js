@@ -1,4 +1,5 @@
 import React from 'react'
+import FCM from 'react-native-fcm';
 import {Actions} from 'react-native-router-flux';
 import {
 	PushNotificationIOS,
@@ -54,10 +55,10 @@ const styles = StyleSheet.create({
 
 export default class LoginModal extends Component {
   componentWillMount() {
-    PushNotificationIOS.addEventListener('register', this._onRegistered);
-    PushNotificationIOS.addEventListener('registrationError', this._onRegistrationError);
-    PushNotificationIOS.addEventListener('notification', this._onRemoteNotification);
-    PushNotificationIOS.addEventListener('localNotification', this._onLocalNotification);
+    //PushNotificationIOS.addEventListener('register', this._onRegistered);
+    //PushNotificationIOS.addEventListener('registrationError', this._onRegistrationError);
+    //PushNotificationIOS.addEventListener('notification', this._onRemoteNotification);
+    //PushNotificationIOS.addEventListener('localNotification', this._onLocalNotification);
 
     //PushNotificationIOS.requestPermissions();
 		//PushNotification.configure({
@@ -102,6 +103,34 @@ export default class LoginModal extends Component {
 		//	requestPermissions: true,
 		//});
   }
+  componentWillUnmount() {
+		this.refreshUnsubscribe();
+		this.notificationUnsubscribe();
+	}
+  componentDidMount() {
+		FCM.requestPermissions(); // for iOS
+		FCM.getFCMToken().then(token => {
+			console.log(token)
+			// store fcm token in your server
+		});
+	}
+	notificationUnsubscribe() {
+		FCM.on('notification', (notif) => {
+			// there are two parts of notif. notif.notification contains the notification payload, notif.data contains data payload
+			if(notif.local_notification){
+				//this is a local notification
+			}
+			if(notif.opened_from_tray){
+				//app is open/resumed because user clicked banner
+			}
+		});
+	}
+  refreshUnsubscribe() {
+		FCM.on('refreshToken', (token) => {
+			console.log(token)
+			// fcm token may not be available on first load, catch it here
+		});	
+	}
 
   _onRegistered(deviceToken) {
     AlertIOS.alert(
