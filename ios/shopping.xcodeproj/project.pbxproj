@@ -178,6 +178,20 @@
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
 		};
+		A985E0291E1856B500867460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A985E0241E1856B400867460 /* RCTLinking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTLinking;
+		};
+		A985E02B1E1856B500867460 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A985E0241E1856B400867460 /* RCTLinking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2D2A28471D9B043800D4039D;
+			remoteInfo = "RCTLinking-tvOS";
+		};
 		A98AC2191E133AEE0062D52C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A98AC2141E133AEE0062D52C /* RCTPushNotification.xcodeproj */;
@@ -241,6 +255,7 @@
 		A90DAC9A1E073A87004DE80D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Downloads/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		A90DAC9C1E073FB4004DE80D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Downloads/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		A90DAC9E1E074015004DE80D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Downloads/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		A985E0241E1856B400867460 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		A98AC2131E10A43E0062D52C /* shopping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = shopping.entitlements; path = shopping/shopping.entitlements; sourceTree = "<group>"; };
 		A98AC2141E133AEE0062D52C /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		A98AC2211E14BFFD0062D52C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -412,6 +427,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				A985E0241E1856B400867460 /* RCTLinking.xcodeproj */,
 				A98AC2141E133AEE0062D52C /* RCTPushNotification.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -473,6 +489,15 @@
 				4DF309535156B62E8AAD952C /* Pods_shoppingTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A985E0251E1856B400867460 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A985E02A1E1856B500867460 /* libRCTLinking.a */,
+				A985E02C1E1856B500867460 /* libRCTLinking-tvOS.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		A98AC2151E133AEE0062D52C /* Products */ = {
@@ -576,6 +601,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -614,6 +642,10 @@
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
 					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
+				},
+				{
+					ProductGroup = A985E0251E1856B400867460 /* Products */;
+					ProjectRef = A985E0241E1856B400867460 /* RCTLinking.xcodeproj */;
 				},
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
@@ -792,6 +824,20 @@
 			fileType = archive.ar;
 			path = "libReact-tvOS.a";
 			remoteRef = A93E1D531DFDBB3E00C66C5E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A985E02A1E1856B500867460 /* libRCTLinking.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTLinking.a;
+			remoteRef = A985E0291E1856B500867460 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A985E02C1E1856B500867460 /* libRCTLinking-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRCTLinking-tvOS.a";
+			remoteRef = A985E02B1E1856B500867460 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		A98AC21A1E133AEE0062D52C /* libRCTPushNotification.a */ = {
@@ -1068,7 +1114,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios/**",
-					"$(SRCROOT)/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
 				);
 				INFOPLIST_FILE = shopping/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
@@ -1108,7 +1154,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios/**",
-					"$(SRCROOT)/**",
+					"$(SRCROOT)/../node_modules/react-native/Libraries/LinkingIOS/**",
 				);
 				INFOPLIST_FILE = shopping/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;

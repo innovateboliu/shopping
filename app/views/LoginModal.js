@@ -1,9 +1,6 @@
 import React from 'react'
-import FCM from 'react-native-fcm';
 import {Actions} from 'react-native-router-flux';
 import {
-	PushNotificationIOS,
-	AlertIOS,
 	TouchableHighlight,
   Dimensions,
   StyleSheet,
@@ -17,7 +14,6 @@ import {
   LoginButton,
   AccessToken
 } from 'react-native-fbsdk';
-var PushNotification = require('react-native-push-notification');
 
 
 const window = Dimensions.get('window');
@@ -103,114 +99,6 @@ export default class LoginModal extends Component {
 		//	requestPermissions: true,
 		//});
   }
-  componentWillUnmount() {
-		this.refreshUnsubscribe();
-		this.notificationUnsubscribe();
-	}
-  componentDidMount() {
-		FCM.requestPermissions(); // for iOS
-		FCM.getFCMToken().then(token => {
-			console.log(token)
-			// store fcm token in your server
-		});
-	}
-	notificationUnsubscribe() {
-		FCM.on('notification', (notif) => {
-			// there are two parts of notif. notif.notification contains the notification payload, notif.data contains data payload
-			if(notif.local_notification){
-				//this is a local notification
-			}
-			if(notif.opened_from_tray){
-				//app is open/resumed because user clicked banner
-			}
-		});
-	}
-  refreshUnsubscribe() {
-		FCM.on('refreshToken', (token) => {
-			console.log(token)
-			// fcm token may not be available on first load, catch it here
-		});	
-	}
-
-  _onRegistered(deviceToken) {
-    AlertIOS.alert(
-      'Registered For Remote Push',
-      `Device Token: ${deviceToken}`,
-      [{
-        text: 'Dismiss',
-        onPress: null,
-      }]
-    );
-  }
-
-  _onRegistrationError(error) {
-    AlertIOS.alert(
-      'Failed To Register For Remote Push',
-      `Error (${error.code}): ${error.message}`,
-      [{
-        text: 'Dismiss',
-        onPress: null,
-      }]
-    );
-  }
-
-  _onRemoteNotification(notification) {
-    console.log(notification);
-    AlertIOS.alert(
-      'Push Notification Received',
-      'Alert message: ' + JSON.stringify(notification) + ', ' + notification.getData(),
-      [{
-        text: 'Dismiss',
-        onPress: null,
-      }]
-    );
-  }
-
-  _onLocalNotification(notification){
-    console.log(notification);
-    AlertIOS.alert(
-      'Local Notification Received hello',
-      'Alert message: ' + JSON.stringify(notification) + ', ' + notification.getMessage(),
-      [{
-        text: 'Dismiss',
-        onPress: null,
-      }]
-    );
-  }
-
-  _sendLocalNotification() {
-		PushNotification.localNotification({
-			/* iOS and Android properties */
-			title: "My Notification Title", // (optional, for iOS this is only used in apple watch, the title will be the app name on other iOS devices)
-			message: "My Notification Message", // (required)
-			playSound: false, // (optional) default: true
-			soundName: 'default', // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
-			number: 10, // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
-			repeatType: 'day', // (Android only) Repeating interval. Could be one of `week`, `day`, `hour`, `minute, `time`. If specified as time, it should be accompanied by one more parameter 'repeatTime` which should the number of milliseconds between each interval
-			actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
-		});
-    //require('RCTDeviceEventEmitter').emit('localNotificationReceived', {
-    //  aps: {
-    //    alert: 'Sample notification',
-    //    'content-available': 1,
-    //    badge: '+1',
-    //    sound: 'default',
-    //    category: 'REACT_NATIVE'
-    //  },
-    //});
-  }
-
-  _sendRemoteNotification() {
-    require('RCTDeviceEventEmitter').emit('remoteNotificationReceived', {
-      aps: {
-        alert: 'Sample notification',
-        'content-available': 1,
-        badge: '+1',
-        sound: 'default',
-        category: 'REACT_NATIVE'
-      },
-    });
-  }
 
   render() {
     return (
@@ -237,20 +125,6 @@ export default class LoginModal extends Component {
           }
           onLogoutFinished={() => alert('logged out')}
         />
-				<TouchableHighlight
-					underlayColor={'white'}
-					onPress={this._sendLocalNotification}>
-					<Text>
-						send local notification
-					</Text>
-				</TouchableHighlight>
-				<TouchableHighlight
-					underlayColor={'white'}
-					onPress={this._sendRemoteNotification}>
-					<Text>
-						send remote notification
-					</Text>
-				</TouchableHighlight>
       </View>
     );
   }

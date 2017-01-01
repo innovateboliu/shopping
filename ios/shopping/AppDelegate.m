@@ -14,7 +14,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "RCTPushNotificationManager.h"
 #import "RNFIRMessaging.h"
-
+#import "RCTLinkingManager.h"
 
 @implementation AppDelegate
 
@@ -65,7 +65,7 @@
 // Required for the remoteNotificationsRegistered event.
 - (void)application:(__unused UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-  printf("A$$$$token");
+  NSLog(@"%@", deviceToken);
   [RCTPushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
@@ -88,6 +88,8 @@
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
 {
+  printf("$$$$$$$$$$$ haha");
+  NSLog(@"%@", response);
     NSDictionary* userInfo = [[NSMutableDictionary alloc] initWithDictionary: response.notification.request.content.userInfo];
   [userInfo setValue:@YES forKey:@"opened_from_tray"];
   [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:userInfo];
@@ -99,8 +101,26 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler{
+  printf("$$$$$$$$$$$ haha2");
+  NSLog(@"%@", userInfo);
   [[NSNotificationCenter defaultCenter] postNotificationName:FCMNotificationReceived object:self userInfo:userInfo];
   completionHandler(UIBackgroundFetchResultNoData);
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+  return [RCTLinkingManager application:application openURL:url
+                      sourceApplication:sourceApplication annotation:annotation];
+}
+
+// Only if your app is using [Universal Links](https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html).
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void (^)(NSArray * _Nullable))restorationHandler
+{
+  return [RCTLinkingManager application:application
+                   continueUserActivity:userActivity
+                     restorationHandler:restorationHandler];
 }
 
 @end

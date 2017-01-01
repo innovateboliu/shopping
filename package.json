@@ -10,6 +10,7 @@
     "ramda": "^0.22.1",
     "react": "15.4.1",
     "react-native": "^0.39.2",
+    "react-native-button": "^1.7.1",
     "react-native-checkbox": "^1.1.0",
     "react-native-fbsdk": "^0.4.0",
     "react-native-fcm": "^2.5.5",

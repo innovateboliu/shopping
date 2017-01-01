@@ -1,8 +1,11 @@
 import React from 'react';
 import {Actions} from 'react-native-router-flux'
 import TagRow from './TagRow';
+import Button from 'react-native-button';
 
 import {
+  AsyncStorage,
+	Share,
   ListView,
 	TouchableHighlight,
 	Image,
@@ -11,10 +14,24 @@ import {
 } from 'react-native';
 import TodoItem from './TodoItem';
 
-
 const TodoListView = ({todos, onTagPress}) => {
+  const setStorage = async (key, val) => {
+	  await AsyncStorage.setItem(key, val);	
+  }
+
   const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.rowId !== r2.rowId});
   const dataSource = ds.cloneWithRows(todos);
+	const share = () => {
+    setStorage('bo', 'cool');
+		Share.share({
+      message: 'boshoppingapp://hello'
+    })
+    .then(showResult)
+    .catch((error) => this.setState({result: 'error: ' + error.message}));
+	};
+	const showResult = (result) => {
+		console.log("share result: " + JSON.stringify(result));
+	};
   return(
     <View
       style={{flex: 1, marginTop:30, marginLeft:30, marginRight: 30}}
@@ -41,6 +58,14 @@ const TodoListView = ({todos, onTagPress}) => {
           dataSource={dataSource}
           renderRow={(data) => <TagRow content={data} onPress={onTagPress}/>}
         />
+			</View>
+			<View style={{flex: 5}}>
+				<Button
+					style={{fontSize: 20, color: 'green'}}
+					styleDisabled={{color: 'red'}}
+					onPress={share}>
+					Share
+				</Button>
 			</View>
     </View>
   );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   View,
   Text 
 } from 'react-native';
@@ -9,7 +10,11 @@ import {
 import {Actions} from 'react-native-router-flux';
 
 export default class WelcomeView extends Component {
+  async printStorage() {
+    console.log(await AsyncStorage.getItem('bo'));
+  }
   componentDidMount() {
+    this.printStorage();
     AccessToken.getCurrentAccessToken().then(
       (data) => {
         if (!data) {

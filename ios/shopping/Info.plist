@@ -21,6 +21,20 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>org.reactjs.native.bo.shopping</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>boshoppingapp</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>fb</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1761854250698504</string>
